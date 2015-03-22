@@ -3,6 +3,7 @@ package com.nikhil.kta.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 
 import com.nikhil.kta.application.activity.R;
 
@@ -27,11 +28,11 @@ public class Constant {
 	
 	//SPEED BAD SPRITE
 	
-	public static final int SPEED_SPRITE_BAD = 5;
+	public static final int SPEED_SPRITE_BAD = 15;
 	
 	
 	//SPEED Good SPRITE
-	public static final int SPEED_SPRITE_GOOD = 3;
+	public static final int SPEED_SPRITE_GOOD = 13;
 	
 	
 	
@@ -70,6 +71,11 @@ public class Constant {
 	public static final int COUNT_BAD_TOTAL=6;
 	
 	public static String SHARED_PREFERENCE_NAME = "KillThemAll";
+	
+	
+	public static int[] BACKGROUND_COLOR ={Color.BLACK,Color.BLUE,Color.CYAN,Color.DKGRAY,
+	Color.GREEN,Color.MAGENTA,Color.GRAY,Color.LTGRAY,Color.YELLOW,Color.WHITE};	
+	
 	
 	
 	

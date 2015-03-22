@@ -2,6 +2,7 @@ package com.nikhil.kta.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -65,9 +66,16 @@ public class GameLevel {
 
 	private int badCount = 0 ;
 	
-	public List startLevel()
+	public List<Sprite> startLevel()
 	{
 		getPoints(context);
+		
+		
+		Sprite sprite ;
+        sprite  = createSprite(Constant.SPRITE_BAD1,Constant.NAME_BAD1,Constant.TYPE_BAD);
+        badCount++;
+        spriteList.add(sprite);
+		
 		createSpritesGood();
 		createSpritesBad();
 		return spriteList;
@@ -119,25 +127,49 @@ public class GameLevel {
 	 
 	 
 	 public void createSpritesGood() {
-        Sprite sprite ;
+		 
+		// Random rnd = new Random();
+        
+    //    int i = rnd.nextInt() % 6;
+		 
+		 Sprite sprite ;
+		 
+      //  if(i == 0)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD1,Constant.NAME_GOOD1,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
+    //    if(i== 1)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD2,Constant.NAME_GOOD2,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
+     //   if(i == 2)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD3,Constant.NAME_GOOD3,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
+     //   if(i == 3)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD4,Constant.NAME_GOOD4,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
+    //    if(i == 4)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD5,Constant.NAME_GOOD5,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
+    //    if(i == 5)
+        {
         sprite  = createSprite(Constant.SPRITE_GOOD6,Constant.NAME_GOOD6,Constant.TYPE_GOOD);
         goodCount++;
         spriteList.add(sprite);
+        }
         
        
         
@@ -152,6 +184,7 @@ public class GameLevel {
          Sprite sprite = new Sprite(gameView, bmp);
          sprite.setName(name);
          sprite.setType(type);
+          sprite.setSpeed();
          
          
          return sprite;
@@ -172,10 +205,11 @@ public class GameLevel {
 		
 		if(killed == count)
 		{
+			  Random rnd = new Random();
 			level++;
 			String levelStrng ="Level up "+"Points :"+String.valueOf(points)+" Level :"+ String.valueOf(level);
 			
-		
+			gameView.setColor(Math.abs((rnd.nextInt(100) % 9)));
 		
 		Toast.makeText(context, levelStrng, Toast.LENGTH_LONG).show();
 		

@@ -13,7 +13,7 @@ public class  Sprite {
     // animation = 3 back, 1 left, 0 front, 2 right
     int[] DIRECTION_TO_ANIMATION_MAP = { 3, 1, 0, 2 };
   
-    private static final int MAX_SPEED = 5;
+ 
     private GameView gameView;
     private Bitmap bmp;
     private int x = 0;
@@ -52,9 +52,15 @@ public class  Sprite {
 
           Random rnd = new Random();
           x = rnd.nextInt(gameView.getWidth() - width);
-          y = rnd.nextInt(gameView.getHeight() - height);
-          xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
-          ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
+         // y = rnd.nextInt(gameView.getHeight() - height);
+          
+          
+          
+          
+          
+        //  x = 0;
+          
+        
           
           
           
@@ -66,9 +72,11 @@ public class  Sprite {
 		{
 			xSpeed = Constant.SPEED_SPRITE_BAD;
 			ySpeed = Constant.SPEED_SPRITE_BAD;
+			y = 0;
 		}
 		else
 		{
+			 y = gameView.getHeight() - height;
 			xSpeed = Constant.SPEED_SPRITE_GOOD;
 			ySpeed = Constant.SPEED_SPRITE_GOOD;
 		}
@@ -127,4 +135,20 @@ public class  Sprite {
     public boolean isCollition(float x2, float y2) {
           return x2 > x && x2 < x + width && y2 > y && y2 < y + height;
     }
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 }

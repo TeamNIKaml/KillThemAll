@@ -2,7 +2,6 @@ package com.nikhil.kta.thread;
 
 import android.graphics.Canvas;
 
-import com.nikhil.kta.model.GameLevel;
 import com.nikhil.kta.view.GameView;
 
 public class GameLoopThread extends Thread{
@@ -40,7 +39,7 @@ public class GameLoopThread extends Thread{
                  }
                  sleepTime = ticksPS - (System.currentTimeMillis() - startTime);
                  try {
-                        if (sleepTime > 0)
+                       if (sleepTime > 0)
                                sleep(sleepTime);
                         else
                                sleep(10);
