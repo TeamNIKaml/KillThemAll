@@ -55,7 +55,47 @@ public class  Sprite {
           y = rnd.nextInt(gameView.getHeight() - height);
           xSpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
           ySpeed = rnd.nextInt(MAX_SPEED * 2) - MAX_SPEED;
+          
+          
+          
     }
+	
+	public void setSpeed()
+	{
+		if(type == Constant.TYPE_BAD)
+		{
+			xSpeed = Constant.SPEED_SPRITE_BAD;
+			ySpeed = Constant.SPEED_SPRITE_BAD;
+		}
+		else
+		{
+			xSpeed = Constant.SPEED_SPRITE_GOOD;
+			ySpeed = Constant.SPEED_SPRITE_GOOD;
+		}
+		
+		  Random rnd = new Random();
+		 int xboost =( rnd.nextInt()%3);
+		 int yboost =(rnd.nextInt(100)) % 3;
+		 
+		 if((rnd.nextInt() % 2) == 0)
+		 {
+			 xboost++;yboost++;
+		 }
+		 else if((rnd.nextInt() % 3) == 0)
+		 {
+			 xboost *=-1; yboost *= -1;
+		 }
+		 else if((rnd.nextInt() % 7) == 0)
+		 {
+			 xboost *=-1;
+		 }
+		 else
+		 {
+			 yboost *=-1;
+		 }
+		  
+	}
+	
 
     private void update() {
           if (x >= gameView.getWidth() - width - xSpeed || x + xSpeed <= 0) {

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
+import com.nikhil.kta.application.activity.MainActivity;
 import com.nikhil.kta.view.GameView;
 
 public class GameLevel {
@@ -64,6 +67,7 @@ public class GameLevel {
 	
 	public List startLevel()
 	{
+		getPoints(context);
 		createSpritesGood();
 		createSpritesBad();
 		return spriteList;
@@ -164,6 +168,8 @@ public class GameLevel {
 		
 		points +=  (badKilled * Constant.BAD_SCORE) + (goodKilled * Constant.GOOD_SCORE);
 		
+		
+		
 		if(killed == count)
 		{
 			level++;
@@ -173,12 +179,46 @@ public class GameLevel {
 		
 		Toast.makeText(context, levelStrng, Toast.LENGTH_LONG).show();
 		
+		int bonusPoint =(int)( level * 10);
+		
+		points += bonusPoint;
+		
+		writeSharedPreference(context, points,(int) level) ;
+		
 			
 			badKilled = goodKilled =0;
 		}
 		
+		MainActivity.setScore(String.valueOf(level), String.valueOf(points));
+		
 	}
-	
+
+
+
+	public  void writeSharedPreference(Context context,long points,long level) {
+		// TODO Auto-generated method stub
+		 SharedPreferences pref;
+		 Editor editor;
+		pref =context.getSharedPreferences(
+				Constant.SHARED_PREFERENCE_NAME, 0);
+		editor = pref.edit();
+		editor.putLong("points", points);
+		editor.putLong("level", level);
+		
+		editor.commit();
+
+	}
+
+	public  void getPoints(Context context) {
+		
+		 SharedPreferences pref;
+		pref = context.getSharedPreferences(
+				Constant.SHARED_PREFERENCE_NAME, 0);
+		points =pref.getLong("points", 0);
+		level = pref.getLong("level", 0);
+				
+		//logindetails.setLoginStatus(pref.getInt("loginstatus", 0));
+	}
 
 	
 

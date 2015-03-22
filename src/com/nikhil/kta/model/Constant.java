@@ -1,6 +1,11 @@
 package com.nikhil.kta.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
 import com.nikhil.kta.application.activity.R;
+
 
 public class Constant {
 	
@@ -63,6 +68,11 @@ public class Constant {
 	
 	public static final int COUNT_GOOD_TOTAL=6;
 	public static final int COUNT_BAD_TOTAL=6;
+	
+	public static String SHARED_PREFERENCE_NAME = "KillThemAll";
+	
+	
+	
 	
 	
 	
